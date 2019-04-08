@@ -11,6 +11,7 @@
 	<link href="css/reset.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
 	<link rel="shortcut icon" type="image/png" href="./img/icon.png"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -19,13 +20,24 @@
 		<h1>Kevin Schmid</h1>
 		<p id="post">software engineer from Graz.</p>
 	</header>
-	<section>
-		<p>I've been a developer since 2009 and I currently work at <a target="_blank" href="https://www.knapp.com/">Knapp Systemintegration</a> as a software engineer in product development.</p>
-		<p>I also study part-time Software Design at <a target="_blank" href="https://www.fh-joanneum.at/software-design/bachelor/en/">FH Joanneum.</a></p>
-	</section>
-	<section>
-		<p>Feel free to send me a <a href="mailto:kevin@codinggentleman.com">mail</a> or contact me over at <a target="_blank" href="https://www.xing.com/profile/Kevin_Schmid9">xing</a> or <a target="_blank" href="https://www.linkedin.com/in/kevin-schmid">linkedin</a>.</p>
-	</section>
+	<nav>
+		<span class="menuitem" onclick="about()">About</span>
+		<span class="menuitem" onclick="github()">Github</span>
+	</nav>
+	<article id="about">
+		<section>
+			<p>I've been a developer since 2009 and I currently work at <a target="_blank" href="https://www.knapp.com/">Knapp Systemintegration</a> as a software engineer in product development.</p>
+			<p>I also study part-time Software Design at <a target="_blank" href="https://www.fh-joanneum.at/software-design/bachelor/en/">FH Joanneum.</a></p>
+		</section>
+		<section>
+			<p>Feel free to send me a <a href="mailto:kevin@codinggentleman.com">mail</a> or contact me over at <a target="_blank" href="https://www.xing.com/profile/Kevin_Schmid9">xing</a> or <a target="_blank" href="https://www.linkedin.com/in/kevin-schmid">linkedin</a>.</p>
+		</section>
+	</article>
+	<article id="github">
+		<section>
+			<canvas id="github_content"></canvas>
+		</section>
+	</article>
 	<footer>
 		<p>All rights reserved.</p>
 	</footer>
