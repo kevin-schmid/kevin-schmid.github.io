@@ -1,8 +1,7 @@
 html {
 	background-color: #fcfcfc;
 	font-family: 'Noto Serif', serif;
-	font-size: 0.9em;
-	color: #3c376b;
+	color: #444444;
 }
 
 body {
@@ -13,23 +12,37 @@ body {
 	right: 0;
 	bottom: 0;
 	left: 0;
-	width: 700px;
 	height: 500px;
-	line-height: 1.5;
+	line-height: 1.4;
 	padding: 0 20px;
+}
+
+article {
+	padding-bottom: 50px;
 }
 
 section {
 	margin-top: 50px;
+	line-height: 1.9;
 }
 
 h1 {
 	display: block;
 	text-align: center;
-	font-size: 6.5em;
+	font-size: 50px;
 	font-weight: bold;
 	padding: 10px 0;
 	letter-spacing: 3px;
+}
+
+a, a:visited {
+	color: rgb(197, 123, 11);
+	text-decoration: none;
+}
+
+nav {
+	text-align: center;
+	padding-top: 50px;
 }
 
 #post {
@@ -43,21 +56,18 @@ footer {
 	width: 100%;
 	padding: 5px 0;
 	text-align: center;
-	font-size: 0.8em;
+	font-size: 0.6em;
 	background-color: #fcfcfc;
 }
 
-@media (max-width: 740px) {
+@media(min-width: 800px) {
+	html {
+		font-size: 1.5em;
+	}
 	body {
-		position: static;
-		width: auto
+		width: 700px;
 	}
-	
-	p {
-		font-size: 1.2em;
-	}
-	
 	h1 {
-		font-size: 12vw;
+		font-size: 100px;
 	}
 }
