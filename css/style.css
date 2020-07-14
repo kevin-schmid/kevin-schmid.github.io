@@ -2,28 +2,19 @@ html {
 	background-color: #fcfcfc;
 	font-family: 'Noto Serif', serif;
 	color: #444444;
+	font-size: 1.5em;
 }
 
 .darkmode {
-	background-color: #444444;
+	background-color: #222222;
 	color: #fcfcfc;
 }
 
 body {
-	position: absolute;
 	margin: auto;
 	margin-top: 50px;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	height: 500px;
 	line-height: 1.4;
-	padding: 0 20px;
-}
-
-article {
-	padding-bottom: 50px;
+	padding: 0px 10px 0px 10px;
 }
 
 section {
@@ -34,7 +25,7 @@ section {
 h1 {
 	display: block;
 	text-align: center;
-	font-size: 2.6em;
+	font-size: 13vw;
 	font-weight: bold;
 	padding: 10px 0;
 	letter-spacing: 3px;
@@ -50,12 +41,13 @@ nav {
 	padding-top: 50px;
 }
 
-#vibra {
-	text-align: center;
-}
-
 #post {
 	text-align: right;
+}
+
+.copyleft {
+	display: inline-block;
+	transform: rotateY(180deg);
 }
 
 footer {
@@ -68,38 +60,11 @@ footer {
 	font-size: 0.6em;
 }
 
-/* Small devices */
-@media (min-width: 576px) {
-	h1 {
-		font-size: 4.6em;
-	}
-}
-
-/* Medium devices */
-@media (min-width: 768px) {
-	html {
-		font-size: 1.2em;
-	}
-	h1 {
-		font-size: 5.4em;
-	}
-}
-
-/* Large devices */
-@media (min-width: 992px) {
-	html {
-		font-size: 1.5em;
-	}
-	body {
-		width: 700px;
-	}
+@media (min-width: 720px) {
 	h1 {
 		font-size: 4.2em;
 	}
-}
-
-@media print {
-	#vibra {
-		display: none;
+	body {
+		width: 700px;
 	}
 }
