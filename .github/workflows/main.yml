@@ -14,3 +14,4 @@ jobs:
         server: www313.your-server.de
         username: codingx
         password: ${{ secrets.ftp_password }}
+        dry-run: true
