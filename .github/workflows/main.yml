@@ -15,4 +15,3 @@ jobs:
         username: codingx
         password: ${{ secrets.ftp_password }}
         server-dir: public_html/
-        dry-run: true
