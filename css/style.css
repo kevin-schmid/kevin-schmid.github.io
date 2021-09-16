@@ -234,23 +234,9 @@ footer {
 	}
 	
 	main {
-		display: grid;
-		grid-template-areas:
-			'left right'
-			'bottom bottom';
-		grid-gap: 2rem;
-	}
-	
-	main > section:nth-child(1) {
-		grid-area: left;
-	}
-	
-	main > section:nth-child(2) {
-		grid-area: right;
-	}
-	
-	main > section:nth-child(3) {
-		grid-area: bottom;
+		display: flex;
+		flex-wrap:wrap;
+		
 	}
 	
 	a, a:visited {
