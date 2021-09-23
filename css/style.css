@@ -42,10 +42,6 @@ header {
 	text-shadow: 2px 0 0 var(--clr-neutral-800), -2px 0 0 var(--clr-neutral-800), 0 2px 0 var(--clr-neutral-800), 0 -2px 0 var(--clr-neutral-800), 1px 1px var(--clr-neutral-800), -1px -1px 0 var(--clr-neutral-800), 1px -1px 0 var(--clr-neutral-800), -1px 1px 0 var(--clr-neutral-800);
 }
 
-header p {
-	font-size: 1.4rem;
-}
-
 body {
 	line-height: 1.9;
 	display: grid;
@@ -58,6 +54,11 @@ section {
 	max-width: 42rem;
 	padding-left: 3rem;
 	padding-right: 3rem;
+}
+
+section > ol {
+	display: flex; 
+	flex-flow: row wrap-reverse
 }
 
 ::selection {
