@@ -1,7 +1,7 @@
 @import url(base.css);
 
 #printbutton {
-	position: absolute;
+	position: fixed;
 	top: 0px;
 	right: 0px;
 	margin-top: 1rem;
@@ -12,16 +12,15 @@
 	border: 0.16em solid var(--clr-neutral-400);
 	border-radius: 0.5em;
 	box-sizing: border-box;
-	text-decoration: none;
-	font-weight: 300;
 	color: var(--clr-neutral-100);
 	text-shadow: 0 0.04em 0.04em var(--clr-neutral-400);
 	text-align: center;
-	transition: all 0.2s;
+	transition: all 0.45s;
+	cursor: pointer;
 }
 
 #printbutton:hover {
-	border-color: var(--clr-neutral-100);
+	border-color: var(--clr-primary-900);
 }
 
 html {
@@ -115,6 +114,16 @@ li {
 a, a:visited {
 	color: var(--clr-primary-900);
 	text-decoration: none;
+	/* Underline effect */
+	padding-bottom: 2px;
+	background: linear-gradient(var(--clr-neutral-400),var(--clr-neutral-400)) center bottom;
+	background-size: 0% 2px; 
+	background-repeat:no-repeat; 
+	transition: all 0.45s;
+}
+
+a:hover {
+	background-size: 100% 2px;
 }
 
 .copyleft {
