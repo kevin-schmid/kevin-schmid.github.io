@@ -30,7 +30,7 @@ html {
 }
 
 header {
-	padding-top: 15rem;
+	padding-top: 9rem;
 	padding-bottom: 16rem;
 	background-image: url("../img/hero.jpg");
 	background-repeat: no-repeat;
@@ -152,8 +152,7 @@ footer {
 
 @media (max-width: 42rem) {
 	header {
-		padding-top: 13rem;
-		padding-bottom: 13rem;
+		padding-bottom: 16rem;
 	}
 
 	h1 {
