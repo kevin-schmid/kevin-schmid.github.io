@@ -2,7 +2,7 @@
 
 #printbutton {
 	position: fixed;
-	top: 0px;
+	bottom: 10px;
 	right: 0px;
 	margin-top: 1rem;
 	margin-right: 1rem;
@@ -132,7 +132,7 @@ a:hover {
 }
 
 footer {
-	padding: 1rem 0;
+	padding: 7rem 0 1rem 0;
 	font-size: 0.8rem;
 	text-align: center;
 }
@@ -152,7 +152,7 @@ footer {
 
 @media (max-width: 42rem) {
 	header {
-		padding-bottom: 16rem;
+		padding-bottom: 21rem;
 	}
 
 	h1 {
