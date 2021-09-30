@@ -1,11 +1,12 @@
 @import url(base.css);
 
 #printbutton {
-	position: fixed;
-	bottom: 10px;
-	right: 0px;
+	position: sticky;
+	display: block;
+	bottom: 1rem;
+	margin-left: auto;
 	margin-top: 1rem;
-	margin-right: 1rem;
+	width: fit-content;
 
 	background-color: var(--clr-neutral-400);
 	padding: 0.4em 1.2em;
@@ -29,9 +30,19 @@ html {
 	color: var(--clr-neutral-800);
 }
 
+body {
+	line-height: 1.9;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+}
+
+::selection {
+	background: var(--clr-neutral-800);
+	color: var(--clr-neutral-100);
+}
+
 header {
-	padding-top: 9rem;
-	padding-bottom: 16rem;
+	height: 100vh;
 	background-image: url("../img/hero.jpg");
 	background-repeat: no-repeat;
 
@@ -41,18 +52,20 @@ header {
 	text-shadow: 2px 0 0 var(--clr-neutral-800), -2px 0 0 var(--clr-neutral-800), 0 2px 0 var(--clr-neutral-800), 0 -2px 0 var(--clr-neutral-800), 1px 1px var(--clr-neutral-800), -1px -1px 0 var(--clr-neutral-800), 1px -1px 0 var(--clr-neutral-800), -1px 1px 0 var(--clr-neutral-800);
 }
 
-body {
-	line-height: 1.9;
-	display: grid;
-	grid-template-rows: auto 1fr auto;
+header > section {
+	margin: auto;
+	max-width: 42rem;
+	padding-top: 17rem;
+}
+
+main {
+	margin: auto;
+	max-width: 42rem;
+	padding-bottom: 7rem;
 }
 
 section {
-	margin: auto;
 	margin-top: 8rem;
-	max-width: 42rem;
-	padding-left: 3rem;
-	padding-right: 3rem;
 }
 
 section > ol {
@@ -60,10 +73,6 @@ section > ol {
 	flex-flow: row wrap-reverse
 }
 
-::selection {
-	background: var(--clr-neutral-800);
-	color: var(--clr-neutral-100);
-}
 
 p {
 	padding-top: 1rem;
@@ -132,7 +141,7 @@ a:hover {
 }
 
 footer {
-	padding: 7rem 0 1rem 0;
+	padding-bottom: 1rem;
 	font-size: 0.8rem;
 	text-align: center;
 }
@@ -151,9 +160,6 @@ footer {
 }
 
 @media (max-width: 42rem) {
-	header {
-		padding-bottom: 21rem;
-	}
 
 	h1 {
 		font-size: 2.2rem;
@@ -163,7 +169,13 @@ footer {
 		font-size: 1.2rem;
 	}
 	
-	section {
+	header > section {
+		padding-top: 17rem;
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+
+	main {
 		padding-left: 1rem;
 		padding-right: 1rem;
 	}
