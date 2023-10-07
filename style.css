@@ -1,0 +1,73 @@
+html {
+    overflow: auto;
+    margin-left: calc(100vw - 100%); 
+}
+
+body {
+    font-family: 'Cousine Nerd Font Mono', 'Cousine Nerd Font Propo', 'Cousine', monospace;
+    margin: auto;
+    padding: 18px;
+    max-width: 700px;
+    font-size: 1.2em;
+    line-height: 1.5em;
+    background-color: #002b36;
+    color: #eee8d5;
+	color-scheme: dark;
+}
+
+a {
+    color: #e36d3b;
+}
+
+code, pre {
+	font-family: 'Cousine Nerd Font Mono', 'Cousine Nerd Font Propo', 'Cousine', monospace;
+	color: #1BB2B5;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+	padding-bottom: 20px;
+}
+
+h1, h2 {
+    padding-top: 20px;
+}
+
+h1::before {
+    content: '# ';
+}
+
+h2::before {
+    content: '## ';
+}
+
+ul {
+    list-style: "* ";
+    padding-left: 1em;
+}
+
+ol {
+	padding-left: 2em;
+}
+
+figure img {
+	object-fit: contain;
+	height: 100%; 
+	width: 100%;
+}
+
+@media screen and (prefers-color-scheme: light) {
+    body {
+        background-color: #fffbf0;
+		color-scheme: light;
+        color: #3a464a;
+    }
+    a {
+        color: #b51e1b;
+    }
+	code, pre {
+		color: #B51B65;
+	}
+}
+

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>This site: Back to the roots</title>
+        <meta charset="utf-8">
+		<meta name="language" content="english">
+		<meta http-equiv="content-type" content="text/html">
+        <meta name="author" content="Kevin Schmid">
+        <meta name="description" content="This site: Back to the roots">
+		<link href="/style.css" rel="stylesheet"/>
+	</head>
+    <body>
+        <nav>
+            <a href="/">Home</a>
+            <a target="_" href="https://pdi-digital.com">PDi Digital</a>
+            <a target="_" href="https://github.com/kevin-schmid">GitHub</a>
+            <a target="_" href="https://linkedin.com/in/kevin-schmid">LinkedIn</a>
+        </nav>
+        <h1>cd /</h1>
+		<aside>2023-10-05</aside>
+        <p>As the first blog post, I wanted to talk a bit about why I chose the design of this site, what features I use and my current thoughts about software in general.</p>
+		<h2>JavaScript</h2>
+		<p><b>No.</b> That's the first feature. The main site works without JS. I might sprinkle some JS on future posts but I want to keep it at a minimum. Not because I don't like JS as a language, I'm fine with it <b>on the frontend</b>, but "the best code is no code at all". Additionally, I'm kinda fed up with the bloat you get everywhere. As in generally. Therefore I'm on the path of simplicity in everything IT. I coded in Java for ages and I had to use Ant, Maven, Tomcat, WildFly, Hibernate. You know, the J2E stables (now you know why I grew tired). Nowadays I try to use go as much as possible. I kinda dig Micronaut but my love for Java is gone. For frontend stuff, I really like <a target="_" href="https://svelte.dev/">Svelte</a> alot although <a target="_" href="https://htmx.org/">htmx</a> peaked my interest. I might try it with the templating go provides in my next project. You'll probably read about it here :D</p>
+		<p>Anyhow, for this simple site, I don't use JS, I don't use a CRM, templating, framework, library or a premade theme. It's simple html, a few lines of css and that's it.</p>
+		<h2>Style</h2>
+		<p>I've been a fan of the solarized themes for ages.</p>
+		<figure>
+			<img src="/i/solarized-marge.gif" alt="I just think they're neat: solarized themes" loading="lazy"/>
+			<figcaption>Both light and dark.</figcaption>
+		</figure>
+		<p>I'm not sure if solarized is really better for your eyes and quite frankly, I don't care too much. I'm able to look at it for hours straight therefore you have to deal with it here. Admittedly, I changed the defaults a bit for increased contrast, you know, for accessability. You should keep stuff like that in mind.</p>
+		<p>This site uses both, dark and light theme. Depending on your system settings, the appropiate one is chosen. The default, if you're on a system that doesn't provide that information, is dark. Speaking of, did you know, that there is <a target="_" href="https://github.com/AutoDarkMode/Windows-Auto-Night-Mode">an open source app</a> (also available in the Microsoft Store) that changes your theme depending on parameters you choose? Like time of day? On Linux, ... you probably know how to do that for your DE. I use <a target="_" href="https://extensions.gnome.org/extension/2236/night-theme-switcher">Night Theme Switcher for Gnome</a>.</p>
+		<p>The css I use on this site is minimal. Headings and lists are styled to look a bit like markdown. As I don't use font depending styling I don't force a font onto you. If you happen to have <a target="_" href="https://fonts.google.com/specimen/Cousine">Cousine</a> or the <a target="_" href="https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Cousine">Nerd Font variant of it</a> installed you have the same experience as I but honestly, it doesn't really matter much, does it?</p>
+		<p>A little trick I use to surpress a style jumping as soon as the scrollbar appears is: </p>
+		<pre>html { margin-left: calc(100vw - 100%); }</pre>
+        <p>If you want to know why that works in detail, checkout <a target="_" href="https://aykevl.nl/2014/09/fix-jumping-scrollbar">this blog article</a> by Ayke van Laethem. In short: <code>100vw</code> is the width of the site with scrollbar and <code>100%</code> is the width without scrollbar. Other then that, I use pretty standard css.</p>
+		<h2>That's it?</h2>
+		<p>Yea. It's amazing how simple a website can be. Browsers, HTML and css came a long way. For a little site like this one, with a simple blog, you don't need anything. Really. Be okay with simplicity because I know for a fact, this site here will work just fine in 20 years. The last reactive app I built, not so much.</p>
+    </body>
+</html>
