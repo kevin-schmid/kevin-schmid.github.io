@@ -1,5 +1,11 @@
+html {
+    overflow: auto;
+    margin-left: calc(100vw - 100%); 
+}
+
 body {
     font-family: 'Cousine Nerd Font Mono', 'Cousine Nerd Font Propo', 'Cousine', monospace;
+    width: clamp(40vw, 700px, 100vw); 
     margin: auto;
     padding: 18px;
     font-size: 1.2em;
@@ -7,17 +13,6 @@ body {
     background-color: #002b36;
     color: #eee8d5;
 	color-scheme: dark;
-}
-
-@media only screen and (min-width: 768px) {
-    html {
-        overflow: auto;
-        margin-left: calc(100vw - 100%); 
-    }
-
-    body {
-        max-width: 700px;
-    }
 }
 
 a {
