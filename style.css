@@ -5,7 +5,7 @@ html {
 
 body {
     font-family: 'Cousine Nerd Font Mono', 'Cousine Nerd Font Propo', 'Cousine', monospace;
-    width: clamp(40vw, 700px, 95vw); 
+    width: clamp(40vw, 700px, 90vw); 
     margin: auto;
     padding: 18px;
     font-size: 1.2em;
