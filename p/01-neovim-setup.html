@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>neovim.setup({})</title>
+        <meta charset="utf-8">
+        <meta name="author" content="Kevin Schmid">
+        <meta name="description" content="neovim.setup">
+        <meta name="darkreader-lock">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link href="/style.css" rel="stylesheet"/>
+	</head>
+    <body>
+        <nav>
+            <a href="/">Home</a>
+            <a target="_" href="https://pdi-digital.com">PDi Digital</a>
+            <a target="_" href="https://github.com/kevin-schmid">GitHub</a>
+            <a target="_" href="https://linkedin.com/in/kevin-schmid">LinkedIn</a>
+        </nav>
+        <h1>neovim.setup({})</h1>
+		<aside>2024-01-07</aside>
+        <p>For over 10 years, I coded Java exclusively. Mostly. Then I changed my position from backend dev to DevOps / CloudOps / YamlOps and I felt my tools needed to change too. So I switched to the best editor I've ever used: VS Code. After a couple of months using VS Code I switched to the actual best editor: neovim. I'm not here to talk about why neovim is hands down the best editor if you want to actually own your environment, or understand your IDE but I tell you how I set it up.</p>
+        <h2>Choosing the right distribution for you</h2>
+        <p>None.</p>
+        <h2>What you need</h2>
+        <p>Ask yourself, what do you need for your job? Up until I switched to neovim, I never asked that question myself. I used IntelliJ and VS Code. I installed some plugins and left the rest as is. If that's fine for you, you do you, but I got the feeling that this isn't the way it should be. An IDE should be exactly what I want it to be. Same is true for your OS too btw. I used to spend quite a lot of time debloating Windows, trying to get WSL to work (i.e. I tried to make WSL take over everything), editing RegEx just to get them overwritten after the next update. It's the worst. The opposite is true for these plugins:</p>
+        <ul>
+            <li>telescope</li>
+            <li>treesitter</li>
+            <li>lsp-zero</li>
+            <li>copilot</li>
+            <li>colorscheme</li>
+        </ul>
+        <p>That's all of the plugins I use. Of course I played around with some others. nvim-tree, fugitive, a couple mini plugins but honestly, I started with vanilla neovim and added stuff until I was happy. Before we go in: I use Folke's <a target="_" href="https://github.com/folke/lazy.nvim">lazy</a> plugin manager and if you want to just <a href="https://github.com/kevin-schmid/dotfiles/tree/2613de0c07044e26be7f2a3fdb83f76a5044f229/.config/nvim" target="_">see my config, feel free.</a></p>
+        <h3>telescope</h3>
+        <p>I never though a fuzzy finder would be so crucial in my workflow but it changed my habits completely. I used to click through the file tree every IDE has. I wasn't even aware how slow and annoying that was. Nowadays, I use telescope to navigate through my workspace 99% of the time (and the last 1%, I'm fine with netrw).<p>
+        <pre>
+return {
+    "nvim-telescope/telescope.nvim",
+    tag = "0.1.5",
+    lazy = false,
+    dependencies = { "nvim-lua/plenary.nvim" },
+    keys = {
+        { "<leader>pf", "<cmd>Telescope find_files<cr>" },
+        { "<leader>ps", "<cmd>Telescope live_grep<cr>" },
+    },
+    opts = {
+        defaults = {
+            file_ignore_patterns = { "node_modules", ".git", ".idea" },
+        }
+    }
+}
+        </pre>
+        <h3>treesitter</h3>
+        <p>I guess treesitter could be pre-installed in neovim at this point. I didn't do anything fancy with it, so here is my setup.</p>
+        <pre>
+return {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    config = function()
+        local configs = require("nvim-treesitter.configs")
+        configs.setup({
+            ensure_installed = {
+                "bash",
+                "c",
+                "c_sharp",
+                "css",
+                "dockerfile",
+                "go",
+                "gomod",
+                "gitignore",
+                "hcl",
+                "html",
+                "java",
+                "javascript",
+                "json",
+                "lua",
+                "python",
+                "query",
+                "regex",
+                "rust",
+                "typescript",
+                "vim",
+                "vimdoc",
+                "yaml",
+            },
+        })
+    end,
+}
+    </pre>
+    <h3>copilot</h3>
+    <p>It's good. Sometimes scary good, sometimes scary stupid. I like it.</p>
+    <pre>
+return {
+    "github/copilot.vim"
+}
+    </pre>
+    <h3>colorscheme</h3>
+    <p>Nothing much to say here either. I use rose-pine. I used some highlight groups from their repo to make telescope look pretty and the status line is now pink. Also: No background. I will revisit the color scheme later as I want to change it from outside of neovim so my prefered system mode is used.
+    <pre>
+return {
+    "rose-pine/neovim",
+    lazy = false,
+    name = "rose-pine",
+    config = function()
+        require("rose-pine").setup({
+            variant = "main",
+            disable_background = true,
+            highlight_groups = {
+                TelescopeBorder = { fg = "highlight_high", bg = "none" },
+                TelescopeNormal = { bg = "none" },
+                TelescopePromptNormal = { bg = "base" },
+                TelescopeResultsNormal = { fg = "subtle", bg = "none" },
+                TelescopeSelection = { fg = "text", bg = "base" },
+                TelescopeSelectionCaret = { fg = "rose", bg = "rose" },
+
+                StatusLine = { fg = "love", bg = "none" },
+                StatusLineNC = { fg = "subtle", bg = "none" },
+            }
+        })
+        vim.cmd("colorscheme rose-pine")
+    end,
+}
+    </pre>
+    <h3>lsp</h3>
+    <p>Here is the good stuff. I mostly used the default config from lsp-zero. The only thing I've added is the <code>yaml-companion</code>.</p>
+    <pre>
+return {
+    {
+        'VonHeikemen/lsp-zero.nvim',
+        branch = 'v3.x',
+        lazy = true,
+        config = false,
+        init = function()
+            -- Disable automatic setup, we are doing it manually
+            vim.g.lsp_zero_extend_cmp = 0
+            vim.g.lsp_zero_extend_lspconfig = 0
+        end,
+    },
+    {
+        'williamboman/mason.nvim',
+        lazy = false,
+        config = true,
+    },
+
+    -- Autocompletion
+    {
+        'hrsh7th/nvim-cmp',
+        event = 'InsertEnter',
+        dependencies = {
+            {'L3MON4D3/LuaSnip'},
+        },
+        config = function()
+            -- Here is where you configure the autocompletion settings.
+            local lsp_zero = require('lsp-zero')
+            lsp_zero.extend_cmp()
+
+            -- And you can configure cmp even more, if you want to.
+            local cmp = require('cmp')
+            local cmp_action = lsp_zero.cmp_action()
+
+            cmp.setup({
+                formatting = lsp_zero.cmp_format(),
+                mapping = cmp.mapping.preset.insert({
+                    ['<CR>'] = cmp.mapping.confirm({
+                        behavior = cmp.ConfirmBehavior.Replace,
+                        select = true,
+                    }),
+                    ['<C-Space>'] = cmp.mapping.complete(),
+                    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+                    ['<C-d>'] = cmp.mapping.scroll_docs(4),
+                    ['<C-f>'] = cmp_action.luasnip_jump_forward(),
+                    ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+                })
+            })
+        end
+    },
+
+    -- LSP
+    {
+        'neovim/nvim-lspconfig',
+        cmd = {'LspInfo', 'LspInstall', 'LspStart'},
+        event = {'BufReadPre', 'BufNewFile'},
+        dependencies = {
+            {'hrsh7th/cmp-nvim-lsp'},
+            {'williamboman/mason-lspconfig.nvim'},
+            {'astephanh/yaml-companion.nvim'}
+        },
+        config = function()
+            -- This is where all the LSP shenanigans will live
+            local lsp_zero = require('lsp-zero')
+            lsp_zero.extend_lspconfig()
+
+            lsp_zero.on_attach(function(_, bufnr)
+                -- see :help lsp-zero-keybindings
+                -- to learn the available actions
+                lsp_zero.default_keymaps({buffer = bufnr})
+            end)
+            local cfg = require('yaml-companion').setup({
+                builtin_matchers = {
+                    kubernetes_crd = { enabled = true }
+                }
+            })
+
+            require('mason-lspconfig').setup({
+                ensure_installed = {'yamlls'},
+                handlers = {
+                    lsp_zero.default_setup,
+                    lua_ls = function()
+                        -- (Optional) Configure lua language server for neovim
+                        local lua_opts = lsp_zero.nvim_lua_ls()
+                        require('lspconfig').lua_ls.setup(lua_opts)
+                    end,
+                    yamlls = function ()
+                        require('lspconfig').yamlls.setup(cfg)
+                    end
+                }
+            })
+        end
+    }
+}
+    </pre>
+    Right at the last block, I've added astephanh's fork of the yaml-companion. He added one crucial thing that I was missing befor: CRD completion.
+    <h2>Conclusion</h2>
+    <p>After years of using IntelliJ, VS Code and eclipse I have to say: neovim is the best editor there is. It's fast, it's customizable and it's fun to use. I'm not saying that you should switch to neovim, but if you're looking for a new editor, give it a try. You won't regret it.</p>
+</body>
+</html>

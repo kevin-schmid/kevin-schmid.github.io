@@ -8,9 +8,8 @@ body {
     width: clamp(40vw, 700px, 90vw); 
     margin: auto;
     padding: 18px;
-    font-size: 1.2em;
     line-height: 1.5em;
-    background-color: #002b36;
+    background-color: #0a0a0a;
     color: #eee8d5;
 	color-scheme: dark;
 }
