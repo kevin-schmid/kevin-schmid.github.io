@@ -18,21 +18,21 @@
         </nav>
         <h1>neovim.setup({})</h1>
 		<aside>2024-01-07</aside>
-        <p>For over 10 years, I coded Java exclusively. Mostly. Then I changed my position from backend dev to DevOps / CloudOps / YamlOps and I felt my tools needed to change too. So I switched to the best editor I've ever used: VS Code. After a couple of months using VS Code I switched to the actual best editor: neovim. I'm not here to talk about why neovim is hands down the best editor if you want to actually own your environment, or understand your IDE but I tell you how I set it up.</p>
-        <h2>Choosing the right distribution for you</h2>
-        <p>None.</p>
-        <h2>What you need</h2>
-        <p>Ask yourself, what do you need for your job? Up until I switched to neovim, I never asked that question myself. I used IntelliJ and VS Code. I installed some plugins and left the rest as is. If that's fine for you, you do you, but I got the feeling that this isn't the way it should be. An IDE should be exactly what I want it to be. Same is true for your OS too btw. I used to spend quite a lot of time debloating Windows, trying to get WSL to work (i.e. I tried to make WSL take over everything), editing RegEx just to get them overwritten after the next update. It's the worst. The opposite is true for these plugins:</p>
+        <p>For over 10 years, I coded Java exclusively. Mostly. Then I changed my position from backend dev to DevOps / CloudOps / YamlOps and I felt my tools needed to change too. So I switched to the best editor I've ever used: VS Code. Do be frank, I've used VS Code before but it became my new default. After a couple of months happily using VS Code I switched again. This time to the actual best editor: neovim. I'm not here to talk about why neovim is hands down the best editor if you want to actually own your environment, or understand your IDE but I tell you how I set up mine.</p>
+        <h2>How to choose the right distribution for you</h2>
+        <p>Don't.</p>
+        <h2>What you really need</h2>
+        <p>Ask yourself, what do you need for your work? Up until I switched to neovim, I never asked that question myself. I used IntelliJ and VS Code (and notepad++ ofc). I installed some plugins and left the rest as is. If that's fine for you, you do you, but I got the feeling that this isn't the way it should be. An IDE should be exactly what I want it to be. Same is true for your OS too btw. I used to spend quite a lot of time debloating Windows, trying to get WSL to work (i.e. I tried to make WSL take over everything), editing RegEx just to get them overwritten after the next update. It's the worst. The opposite is true for neovim. For the first time, I had complete control of my editor, so I chose the following plugins as I really like a minimalistic setup:</p>
         <ul>
             <li>telescope</li>
             <li>treesitter</li>
             <li>lsp-zero</li>
             <li>copilot</li>
-            <li>colorscheme</li>
+            <li>rose-pine</li>
         </ul>
-        <p>That's all of the plugins I use. Of course I played around with some others. nvim-tree, fugitive, a couple mini plugins but honestly, I started with vanilla neovim and added stuff until I was happy. Before we go in: I use Folke's <a target="_" href="https://github.com/folke/lazy.nvim">lazy</a> plugin manager and if you want to just <a href="https://github.com/kevin-schmid/dotfiles/tree/2613de0c07044e26be7f2a3fdb83f76a5044f229/.config/nvim" target="_">see my config, feel free.</a></p>
+        <p>That's all of the plugins I use (which is a lie as for lsp functionality a couple more plugins are needed). Of course I played around with some others. nvim-tree, fugitive, a few mini plugins but honestly, start with vanilla neovim and add stuff until you are happy. It's really fun to tinker with your editor! Before we go in: I use Folke's <a target="_" href="https://github.com/folke/lazy.nvim">lazy</a> plugin manager so the code snippets are made for that.</p>
         <h3>telescope</h3>
-        <p>I never though a fuzzy finder would be so crucial in my workflow but it changed my habits completely. I used to click through the file tree every IDE has. I wasn't even aware how slow and annoying that was. Nowadays, I use telescope to navigate through my workspace 99% of the time (and the last 1%, I'm fine with netrw).<p>
+        <p>I never though a fuzzy finder would be so crucial in my workflow but it changed my habits completely. I used to click through the file tree every IDE has. I wasn't even aware of how slow and annoying that was. I use telescope to navigate through my workspace 99% of the time (and the last 1%, I'm fine with netrw).<p>
         <pre>
 return {
     "nvim-telescope/telescope.nvim",
@@ -94,8 +94,8 @@ return {
     "github/copilot.vim"
 }
     </pre>
-    <h3>colorscheme</h3>
-    <p>Nothing much to say here either. I use rose-pine. I used some highlight groups from their repo to make telescope look pretty and the status line is now pink. Also: No background. I will revisit the color scheme later as I want to change it from outside of neovim so my prefered system mode is used.
+    <h3>rose-pine</h3>
+    <p>Nothing much to say here either. I used some highlight groups from their repo to make telescope look pretty, the status line is now pink and no background. I will revisit the color scheme later as I want to change it from outside of neovim so my prefered system mode is used. I know that rose-pine understands the setting of the background in neovim (ie :set background=dark) but I need some kind of bash-script to set it on running instances.
     <pre>
 return {
     "rose-pine/neovim",
@@ -103,7 +103,6 @@ return {
     name = "rose-pine",
     config = function()
         require("rose-pine").setup({
-            variant = "main",
             disable_background = true,
             highlight_groups = {
                 TelescopeBorder = { fg = "highlight_high", bg = "none" },
@@ -121,8 +120,8 @@ return {
     end,
 }
     </pre>
-    <h3>lsp</h3>
-    <p>Here is the good stuff. I mostly used the default config from lsp-zero. The only thing I've added is the <code>yaml-companion</code>.</p>
+    <h3>lsp-zero</h3>
+    <p>Here is the good stuff and to surprise of now one I mostly used the default config from lsp-zero. The only thing I've added is the <code>yaml-companion</code>.</p>
     <pre>
 return {
     {
@@ -221,6 +220,6 @@ return {
     </pre>
     Right at the last block, I've added astephanh's fork of the yaml-companion. He added one crucial thing that I was missing befor: CRD completion.
     <h2>Conclusion</h2>
-    <p>After years of using IntelliJ, VS Code and eclipse I have to say: neovim is the best editor there is. It's fast, it's customizable and it's fun to use. I'm not saying that you should switch to neovim, but if you're looking for a new editor, give it a try. You won't regret it.</p>
+    <p>After years of using IntelliJ, VS Code and eclipse I have to say: neovim is the best editor there is. It's fast, it's customizable and it's fun to use. I'm not saying that you should switch to neovim, but ... no, you should switch. You won't regret it.</p>
 </body>
 </html>
